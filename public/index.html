@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лабораторная 11 — форма обратной связи</title>
+  <style>
+    :root {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: #1a1a1a;
+      background: #f4f6fb;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      padding: 2rem 2.25rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+      width: min(420px, 92vw);
+    }
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.35rem;
+    }
+    p.sub {
+      margin: 0 0 1.25rem;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem 0.65rem;
+      margin-bottom: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+    }
+    textarea { min-height: 88px; resize: vertical; }
+    button {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover { background: #1d4ed8; }
+    #message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background: #ecfdf5;
+      color: #065f46;
+      font-size: 0.95rem;
+      display: none;
+    }
+    #message.visible { display: block; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Форма обратной связи</h1>
+    <p class="sub">Лабораторная работа 11 — CI/CD и тестирование</p>
+
+    <form id="feedback-form" novalidate>
+      <label for="name">Имя</label>
+      <input id="name" name="name" type="text" placeholder="Иван Иванов" autocomplete="name" />
+
+      <label for="email">Электронная почта</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+
+      <label for="comment">Комментарий</label>
+      <textarea id="comment" name="comment" placeholder="Текст сообщения"></textarea>
+
+      <button type="submit" id="submit-btn">Отправить сообщение</button>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+  </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById("feedback-form");
+      var msg = document.getElementById("message");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value.trim();
+        msg.textContent =
+          name
+            ? "Спасибо, " + name + "! Сообщение принято."
+            : "Спасибо! Сообщение принято.";
+        msg.classList.add("visible");
+      });
+    })();
+  </script>
+</body>
+</html>
