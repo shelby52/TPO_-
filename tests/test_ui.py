@@ -34,7 +34,7 @@ def test_submit_button_is_visible(driver, base_url):
     driver.get(base_url + "/index.html")
     btn = driver.find_element(By.ID, "submit-btn")
     assert btn.is_displayed()
-    assert "Отправить сообщение" in btn.text
+    assert "Отправить сообщение 67" in btn.text
 
 
 def test_form_fields_accept_input(driver, base_url):
