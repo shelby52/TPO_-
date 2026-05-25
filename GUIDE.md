@@ -23,7 +23,20 @@ git config --global user.name "Kirill"
 ```
 (имя можно написать и по-другому — как удобно в коммитах.)
 
-Все команды для консоли ниже для **PowerShell** и пути **`C:\BSTU\SEM6\TPO\lab11`**. Если у тебя другой диск или папка — замени путь.
+Все команды для консоли ниже для **PowerShell** и пути **`C:\Users\Alexandr\Desktop\тпо\lab11`**. Если у тебя другой диск или папка — замени путь.
+
+### Быстрый старт (локально)
+
+```powershell
+cd C:\Users\Alexandr\Desktop\тпо\lab11
+.\run-tests.ps1
+```
+
+Открыть страницу в браузере:
+
+```powershell
+.\open-page.ps1
+```
 
 ---
 
@@ -93,7 +106,7 @@ git config --global user.email "<твой email>"
 Открой PowerShell и выполни по очереди:
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 git init -b main
 git status
 git add .
@@ -114,7 +127,7 @@ git remote add origin https://github.com/Xutrikk/TPO-lab11.git
 ### Шаг C. Создать ветки `dev` и `fix` и отправить на GitHub
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 git branch dev
 git push -u origin dev
 git branch fix
@@ -130,7 +143,7 @@ git push -u origin fix
 ### Шаг A. Виртуальное окружение Python
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
@@ -205,7 +218,7 @@ deactivate
 3. Сохрани файл, коммит и push (например, в ветку `fix` — см. сценарий ниже):
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 git checkout fix
 git pull origin fix
 git add public\index.html
@@ -246,7 +259,7 @@ git push origin fix
 ### Часть 1 — правка кода во ветке `fix`
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 git fetch origin
 git checkout fix
 git pull origin fix
@@ -350,7 +363,7 @@ git pull origin main
 ## Краткая шпаргалка команд (повтор каждого раза перед работой)
 
 ```powershell
-cd C:\BSTU\SEM6\TPO\lab11
+cd C:\Users\Alexandr\Desktop\тпо\lab11
 git fetch origin
 git checkout ИМЯ-ВЕТКИ
 git pull origin ИМЯ-ВЕТКИ

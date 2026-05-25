@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options as EdgeOptions
@@ -5,6 +7,9 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
+_REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+_LOCAL_DRIVER = os.path.join(_REPO_ROOT, "drivers", "msedgedriver.exe")
 
 
 @pytest.fixture
@@ -15,8 +20,11 @@ def driver():
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("--disable-gpu")
     opts.add_argument("--window-size=1280,720")
-    # Selenium Manager сам подтягивает msedgedriver под установленный Edge — отдельная папка с драйвером не нужна
-    drv = webdriver.Edge(service=EdgeService(), options=opts)
+
+    service = EdgeService(
+        executable_path=_LOCAL_DRIVER if os.path.isfile(_LOCAL_DRIVER) else None
+    )
+    drv = webdriver.Edge(service=service, options=opts)
     try:
         yield drv
     finally:
