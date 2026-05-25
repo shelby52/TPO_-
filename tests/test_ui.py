@@ -2,9 +2,11 @@ import os
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.webdriver.edge.service import Service as EdgeService
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -12,19 +14,27 @@ _REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 _LOCAL_DRIVER = os.path.join(_REPO_ROOT, "drivers", "msedgedriver.exe")
 
 
+def _headless_chromium_options(options):
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1280,720")
+
+
 @pytest.fixture
 def driver():
-    opts = EdgeOptions()
-    opts.add_argument("--headless=new")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")
-    opts.add_argument("--disable-gpu")
-    opts.add_argument("--window-size=1280,720")
-
-    service = EdgeService(
-        executable_path=_LOCAL_DRIVER if os.path.isfile(_LOCAL_DRIVER) else None
-    )
-    drv = webdriver.Edge(service=service, options=opts)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        opts = ChromeOptions()
+        _headless_chromium_options(opts)
+        drv = webdriver.Chrome(service=ChromeService(), options=opts)
+    else:
+        opts = EdgeOptions()
+        _headless_chromium_options(opts)
+        service = EdgeService(
+            executable_path=_LOCAL_DRIVER if os.path.isfile(_LOCAL_DRIVER) else None
+        )
+        drv = webdriver.Edge(service=service, options=opts)
     try:
         yield drv
     finally:

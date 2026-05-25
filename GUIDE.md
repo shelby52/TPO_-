@@ -2,24 +2,22 @@
 
 Документ привязан к **текущему содержимому папки проекта** и профилю на GitHub.
 
-**Твой аккаунт:** [github.com/Xutrikk](https://github.com/Xutrikk)
+**Твой аккаунт:** [github.com/shelby52](https://github.com/shelby52)
 
 **Значения по умолчанию в командах ниже:**
 
 | Параметр | Значение |
 |----------|----------|
-| Логин (owner) | `Xutrikk` |
-| Имя репозитория | `TPO-lab11` |
-| HTTPS remote | `https://github.com/Xutrikk/TPO-lab11.git` |
-| После включения Pages (проектный сайт) | `https://xutrikk.github.io/TPO-lab11/` |
+| Логин (owner) | `shelby52` |
+| Имя репозитория | `TPO_-` |
+| HTTPS remote | `https://github.com/shelby52/TPO_-.git` |
+| После включения Pages (проектный сайт) | `https://shelby52.github.io/TPO_-/` |
 
-Если при создании репозитория на GitHub укажешь **другое имя** — замени везде `TPO-lab11` на своё имя.
-
-**Git email** — свой (тот же, что в настройках GitHub, или любой указанный в `git config`):
+**Git email** — свой (тот же, что в настройках GitHub):
 
 ```powershell
 git config --global user.email "<твой email>"
-git config --global user.name "Kirill"
+git config --global user.name "shelby52"
 ```
 (имя можно написать и по-другому — как удобно в коммитах.)
 
@@ -92,14 +90,14 @@ git config --global user.email "<твой email>"
 
 ### Шаг A. Создать пустой репозиторий на GitHub
 
-1. Зайди на [github.com/new](https://github.com/new) под аккаунтом **Xutrikk**.  
-2. **Repository name:** **`TPO-lab11`** (или своё имя — тогда поправь URL в следующих блоках команд).  
+1. Зайди на [github.com/new](https://github.com/new) под аккаунтом **shelby52**.  
+2. **Repository name:** **`TPO_-`** (или своё имя — тогда поправь URL в следующих блоках команд).  
 3. Выбери **Public**.  
 4. **Не** включай галочки «Add a README», «Add .gitignore» (чтобы первый push не конфликтовал; или включи README и тогда на первом `git pull` разрули конфликт — проще без них).  
 5. Нажми **Create repository**.  
 6. На странице репозитория скопируй HTTPS:
 
-   **`https://github.com/Xutrikk/TPO-lab11.git`**
+   **`https://github.com/shelby52/TPO_-.git`**
 
 ### Шаг B. Первый коммит и отправка в `main`
 
@@ -111,7 +109,7 @@ git init -b main
 git status
 git add .
 git commit -m "feat: страница формы, тесты Selenium, CI и деплой на Pages"
-git remote add origin https://github.com/Xutrikk/TPO-lab11.git
+git remote add origin https://github.com/shelby52/TPO_-.git
 git push -u origin main
 ```
 
@@ -119,7 +117,7 @@ git push -u origin main
 
 ```powershell
 git remote remove origin
-git remote add origin https://github.com/Xutrikk/TPO-lab11.git
+git remote add origin https://github.com/shelby52/TPO_-.git
 ```
 
 Если запросят логин/пароль — для GitHub используй **Personal Access Token** вместо пароля (Settings → Developer settings → Personal access tokens), либо войди через **Git Credential Manager**.
@@ -134,7 +132,7 @@ git branch fix
 git push -u origin fix
 ```
 
-Проверка на GitHub: **Code** репозитория [github.com/Xutrikk/TPO-lab11](https://github.com/Xutrikk/TPO-lab11) → выпадающий список веток — должны быть **main**, **dev**, **fix**.
+Проверка на GitHub: **Code** репозитория [github.com/shelby52/TPO_-](https://github.com/shelby52/TPO_-) → выпадающий список веток — должны быть **main**, **dev**, **fix**.
 
 ---
 
@@ -197,7 +195,7 @@ deactivate
 
 После первого `push`:
 
-1. Открой [Actions в репозитории](https://github.com/Xutrikk/TPO-lab11/actions).  
+1. Открой [Actions в репозитории](https://github.com/shelby52/TPO_-/actions).  
 2. Выбери workflow **CI**.  
 3. Убедись, что последний запуск **зелёный** (успешный).
 
@@ -288,8 +286,8 @@ git push origin fix
 
 ### Часть 2 — Pull Request на GitHub: `fix` → `dev`
 
-1. Репозиторий: **[Xutrikk/TPO-lab11](https://github.com/Xutrikk/TPO-lab11)**.  
-2. Быстрое сравнение для PR: [**Compare fix → dev**](https://github.com/Xutrikk/TPO-lab11/compare/dev...fix) (или **Pull requests** → **New pull request**).  
+1. Репозиторий: **[shelby52/TPO_-](https://github.com/shelby52/TPO_-)**.  
+2. Быстрое сравнение для PR: [**Compare fix → dev**](https://github.com/shelby52/TPO_-/compare/dev...fix) (или **Pull requests** → **New pull request**).  
 3. **base:** `dev`, **compare:** `fix`.  
 4. Создай PR, дождись **проверок Actions** (должны быть зелёными).  
 5. Нажми **Merge pull request** → подтверди merge.  
@@ -302,7 +300,7 @@ git pull origin dev
 
 ### Часть 3 — Pull Request: `dev` → `main`
 
-1. Сравнение для PR: [**Compare dev → main**](https://github.com/Xutrikk/TPO-lab11/compare/main...dev).  
+1. Сравнение для PR: [**Compare dev → main**](https://github.com/shelby52/TPO_-/compare/main...dev).  
 2. **base:** `main`, **compare:** `dev`.  
 3. Создай PR, дождись успешного CI.  
 4. **Merge** в `main`.  
@@ -321,7 +319,7 @@ git pull origin main
 
 ### Шаг A. Включить публикацию через Actions
 
-1. Открой [Settings → Pages](https://github.com/Xutrikk/TPO-lab11/settings/pages) для **TPO-lab11**.  
+1. Открой [Settings → Pages](https://github.com/shelby52/TPO_-/settings/pages) для **TPO_-**.  
 2. **Build and deployment** → **Source:** выбери **GitHub Actions** (не «Deploy from a branch» для этого сценария).  
 3. Сохрани, если нужно подтвердить настройку.
 
@@ -336,7 +334,7 @@ git pull origin main
 
 После успешного **deploy** проект будет доступен по адресу (регистр в поддомене не важен):
 
-**`https://xutrikk.github.io/TPO-lab11/`**
+**`https://shelby52.github.io/TPO_-/`**
 
 Открой эту страницу в браузере; точную ссылку после деплоя дублирует блок **Pages** и job **deploy** в Actions.
 

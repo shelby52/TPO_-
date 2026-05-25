@@ -7,14 +7,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v4
 
-      - uses: browser-actions/setup-edge@v1
-        with:
-          edge-version: stable
+      - uses: browser-actions/setup-chrome@v1
 
       - name: Setup Python
         uses: actions/setup-python@v5
